@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div *ngIf="isLoading">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+        <!-- <div class="alert alert-danger" *ngIf="!isLoading && error">
+            {{error}}
+        </div> -->
+        <app-alert [message]="error" (close)="onHandleError()" *ngIf="error"></app-alert>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" email required ngModel>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" password required ngModel minlength="6">
+            </div>
+            <div>
+                <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Log-in' : 'Sign-up'}}</button> |
+                <button class="btn btn-primary" type="button" (click)="onSwitchMode()">{{ isLoginMode ? 'Switch to Sign-up' : 'Switch to Log-in'}}</button>
+            </div>
+        </form>
+    </div>
+</div>
