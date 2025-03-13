@@ -1,4 +1,4 @@
-# MyFirstApp
+# Recipe maker
 
 ### Website Link: https://angulartraining-recipe.web.app/auth
 
